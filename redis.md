@@ -1,5 +1,7 @@
 ## REDIS
 
+### Basics
+
 `SET server:name ‘fido’`
 server:name is the key; ‘fido’ is the value. SET stores the value ‘fido’ at key ‘server:name’
 
@@ -20,6 +22,8 @@ tells Redis that resource:lock should only exist for 120 seconds, after which it
 
 `TTL resource:lock // 113`
 returns the number of seconds that the key has left. Returns -2 if they key no longer exists, and returns -1 if the key will never expires. TTL is reset if you SET the key to something new.
+
+### Lists 
 
 A list is a set of ordered values. You can set up a new list by pushing a value to a key using RPUSH:
 `RPUSH friends ‘Alice’`
@@ -42,6 +46,8 @@ removes and returns the first element from a list
 
 `RPOP friends` 
 removes and returns the last element from a list.
+
+### Sets
 
 Sets are like lists but don’t have an order, and each element may only appear once.
 
@@ -66,6 +72,8 @@ joins two lists together and returns a list of all the elements (remember that e
 `SINTER superpowers birdpowers // “reflexes”`
 returns the ‘intersection’ between two sets, i.e. the elements that they have in common.
 
+### Sorted Sets
+
 `ZADD hackers 1912 “Alan Turing”`
 this adds a value to a sorted set called ‘hackers’. Here, each value has an associated score, which is then used to sort the elements in the set.
 
@@ -74,6 +82,8 @@ returns the score of a given value
 
 `ZRANGE hackers 0 0 // “Alan Turing”`
 returns the range specified, in order. The parameters are not the scores of the values, but the indexes of the values in the ordered list.
+
+### Hashes
 
 Hashes are useful for representing objects - they can nest.
 ```
@@ -98,4 +108,4 @@ deletes the specified field in a hash.
 increases a numerical value of a hash field by given number. If the field specified doesn’t exist, HINCRBY makes it the given number.
 
 `SADD people user:1000`
-this adds the hash ‘user:1000’ to the set ‘people’
+this adds the hash ‘user:1000’ to the set ‘people’ (So you can have a set full of hashes...)
