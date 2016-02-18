@@ -1,4 +1,4 @@
-REDIS
+## REDIS
 
 `SET server:name ‘fido’`
 server:name is the key; ‘fido’ is the value. SET stores the value ‘fido’ at key ‘server:name’
