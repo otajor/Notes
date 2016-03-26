@@ -1,4 +1,4 @@
-### Static Methods
+### Static Methods & final
 * Static variables are known as class variables (as opposed to instance variables) because the whole class just has one of them. 
 ```java
 class Thing {
