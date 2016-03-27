@@ -30,7 +30,7 @@ int[][] grid = {
 grid[2][2]; // 9
 ```
 
-## 17-19 Java Classes
+### 17-19 Java Classes
 
 ```java
 class Person {
@@ -54,7 +54,7 @@ bob.name = “Bob”;
 bob.age = 48;
 bob.speak(); // ‘My name is Bob’
 
-20. Method Parameters
+### 20. Method Parameters
 
 * Pass in arguments with their type declared beforehand.
 
