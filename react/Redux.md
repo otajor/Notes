@@ -63,4 +63,29 @@
       completed: !todo.completed
     }
     ```
-11.
+11-14. **Implementing the Reducer for a to-do app**. You may want to have multiple reducers to make your code clearer. You can then combine these into one higher level reducer, which is what you use with `createStore`.
+15. Redux makes this pattern easier by providing `combineReducers`:
+    ```javascript
+    const { combineReducers } = Redux; 
+    const todoApp = combineReducers({
+      todos: todos, // todos property will be managed by the todos function
+      visibilityFilter: visibilityFilter // ditto for visibilityFilter.
+    });
+    ```
+ * This can be further shortened with ES6 shorthand notation to simply `const todoApp = combineReducers({ todos, visibilityFilter });`
+16. We will now implement combineReducers from scratch.
+    ```javascript
+    const combineReducers = (reducers) => {
+      return (state = {}, action) => {
+        return Object.keys(reducers).reduce(
+          (nextState, key) => {
+            nextState[key] = reducers[key](
+              state[key], // only acts on the relevant part of the state!
+              action
+            );
+            return nextState;
+          }, {});
+      };
+    };
+    ```
+17. Adds React for the todo app. Again, make sure there is a re-render after every state change by calling `store.subscribe(render);`. He also uses the React ref API to pass around the value of an input field. Useful - watch from 3 min mark.
