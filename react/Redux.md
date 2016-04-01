@@ -4,7 +4,7 @@
 3. **Pure vs. Impure functions**: pure functions are predictable. They do not modify what is passed to them, and given the same input, you will always get the same output. Impure functions may override what is passed to them, and may have side-effects.
 4. **The Reducer**: takes the previous state and the action being dispatched, and returns the next state. In every redux app, there is a function which does this - the reducer. It is important that the reducer does not modify the state given to it. It is a pure function. However, this doesn't mean that you can't keep references to parts of the previous state in the next state.
 5. This makes testing very easy
-6. **Store Methods**: We can create our state store with the createStore method from Redux:
+6. **Store Methods**: We can create our state store with the `createStore` method from Redux:
     ```javascript
     const { createStore } = Redux;
     const store = createStore(counter); // counter is your reducer method
@@ -13,7 +13,7 @@
     * The state within the store can then be accessed and changed like so:
     ```javascript
     store.getState(); // gets the state..
-    store.dispatch({type: 'INCREMENT'}); // dispatches an action (the parameter)
+    store.dispatch({type: 'INCREMENT'}); // dispatches an action (the argument)
     store.subscribe(() => { // registers a callback to be called any time an
       document.body.innerText = store.getState(); // action has been dispatched
     })
@@ -56,14 +56,14 @@
       });
     };
     ```
-* This is a new ES6 method. Only use it with babel or with a polyfill. Or use the object spread operator - change the above function to:
+ * This is a new ES6 method. Only use it with babel or with a polyfill. Or use the object spread operator - change the above function to:
     ```javascript
     return {
       ...todo,
       completed: !todo.completed
     }
     ```
-11-14. **Implementing the Reducer for a to-do app**. You may want to have multiple reducers to make your code clearer. You can then combine these into one higher level reducer, which is what you use with `createStore`.
+11. (and 12-14) **Implementing the Reducer for a to-do app**. You may want to have multiple reducers to make your code clearer. You can then combine these into one higher level reducer, which is what you use with `createStore`.
 15. Redux makes this pattern easier by providing `combineReducers`:
     ```javascript
     const { combineReducers } = Redux; 
@@ -89,3 +89,6 @@
     };
     ```
 17. Adds React for the todo app. Again, make sure there is a re-render after every state change by calling `store.subscribe(render);`. He also uses the React ref API to pass around the value of an input field. Useful - watch from 3 min mark.
+18. Adds more to the todo app. Incl. TOGGLE_TODO action.
+20. Adds visibility filters.
+21. Lots of decoupling components, bringing the store methods up to the top-most container.
