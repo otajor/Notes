@@ -35,3 +35,68 @@ System.out.printf("Total cost: %d, total amount: %d", 5, 120) // d = digit
 System.out.printf("Total cost: %-10d, total amount: %d", 5, 120) // -10 = field 10 chars wide
 System.out.printf("Total cost: %.2f", 5.5678) // for floats, .2 = 2 d.p.
 ```
+
+### 25. toString()
+* It is good to define a toString() method within a class so that you can then log that class at any point and you will get a meaningful message in the console:
+```java
+class Frog {
+  private int id;
+  private String name;
+
+  public Frog(int id, String name) {
+    this.id = id;
+    this.name = name;
+  }
+
+  public String toString() {
+    return String.format("%4d: %s", id, name); // d = id, s = name - formatted strings!
+  }
+}
+```
+* You can then call `System.out.println(frog1)` 
+
+### 26. Inheritance
+* When a class inherits from another, it can access all its public methods, and any non-private variables.
+* This can be done by defining the class like so: `public class Car extends Machine {...}`
+* The child class can override methods from the parent class by defining that method again in its own scope. It MUST use the same header. e.g. if the parent had a method called `public void start()` then the child must have that same header to override. You can check if you are really overriding by putting `@Override` above the method that is overriding its parent's method.
+* Variables: child class cannot access the parent's private variables, but variables without a specifier or with a `protected` specifier can be accessed from the parent.
+
+### 27. Packages
+* Packages let you organise your code better. They also prevent class conflicts - if you have two classes with the same name in the same package, there is a conflict, but if they are in two different packages, there is no problem.
+* If you put a class in a package, the package statement should be the first line of the file. This is in the format `package packageName;`
+* To use a class from another package, you must import it. If you have a class called `fish` in a package called `ocean`, import it with `import ocean.Fish;`
+* Eclipse will also organise your imports for you automatically if you want.
+* Packages are hierarchichal in the same way that files are. `parent.child.class` will give you a class in the child package which is in the parent package.
+* Convention with naming packages is that you reverse your website name, e.g. `com.foundersandcoders.className`. This is to avoid conflicts if someone else if using your code.
+
+### 28. Interfaces
+* You can make interfaces which are then implemented by classes/objects:
+```java
+public interface Info {
+  public void showInfo();
+}
+```
+* The method in the interface is not defined in the interface. It is merely stated and given parameters (if any).
+* Any class which *implements* this interface must then have a method with that header, which it must then define.
+```java
+public class Machine implements Info {
+  public void showInfo() {
+    // some code here...
+  }
+}
+```
+* If this class tried to implement Info without including this method, it would throw an exception.
+* Some stuff about info-specific methods, which is interesting.
+
+### 29. Public, Private, Protected
+* If you declare a public class, method or variable, it can be accessed from any class in the package. This is generally bad practice in the case of variables, which should be encapsulated and only accessed through methods.
+* If you want a public variable, you generally want it to be constant, so do it with `public final static int ID;` - this is not bad practice.
+* Private variables or methods can only be accessed from within their class. They can't even be accessed by child classes which inherit other variables.
+* Protected variables can't be accessed by any old class, but can be accessed by child classes. To summarise:
+* Private: only within same class
+* Public: from anywhere
+* Protected: subclass but not if in different package
+* No modifier: same package only
+
+### 30. Polymorphism
+
