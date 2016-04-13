@@ -65,6 +65,7 @@
     ```
 11. (and 12-14) **Implementing the Reducer for a to-do app**. You may want to have multiple reducers to make your code clearer. You can then combine these into one higher level reducer, which is what you use with `createStore`.
 15. Redux makes this pattern easier by providing `combineReducers`:
+
     ```javascript
     const { combineReducers } = Redux; 
     const todoApp = combineReducers({
