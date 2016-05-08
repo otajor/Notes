@@ -75,6 +75,7 @@
     ```
  * This can be further shortened with ES6 shorthand notation to simply `const todoApp = combineReducers({ todos, visibilityFilter });`
 16. We will now implement combineReducers from scratch.
+
     ```javascript
     const combineReducers = (reducers) => {
       return (state = {}, action) => {
