@@ -1,4 +1,5 @@
 ### Equalities
+These notes are 8th Light's Clojure Koans, completed and with my own notes added for additional clarification.
 * Test that two things are equal by comparing them using the equal operator:
 ```clj
 (= true true)
@@ -20,3 +21,4 @@
 ```clj
 (not= "one thing" "another thing")
 ```
+### Strings
